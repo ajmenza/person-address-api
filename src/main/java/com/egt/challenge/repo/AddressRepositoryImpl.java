@@ -1,6 +1,7 @@
 package com.egt.challenge.repo;
 
 import com.egt.challenge.model.Address;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@Component
 public class AddressRepositoryImpl implements AddressRepository {
 
     private final Map<Long, Address> repo = new HashMap<>();

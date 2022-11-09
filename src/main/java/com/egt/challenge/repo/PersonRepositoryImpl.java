@@ -1,13 +1,16 @@
 package com.egt.challenge.repo;
 
 import com.egt.challenge.model.Person;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+@Component
 public class PersonRepositoryImpl implements PersonRepository {
 
     private final Map<Long, Person> repo = new HashMap<>();
@@ -23,11 +26,11 @@ public class PersonRepositoryImpl implements PersonRepository {
     }
 
     @Override
-    public Optional<Person> findByLastName(String lastName) {
+    public List<Person> findByLastName(String lastName) {
         return repo.values()
                 .stream()
                 .filter(p -> p.getLastName().equals(lastName))
-                .findFirst();
+                .collect(Collectors.toList());
     }
 
     @Override

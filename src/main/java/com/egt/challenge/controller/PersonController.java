@@ -1,5 +1,6 @@
 package com.egt.challenge.controller;
 
+import com.egt.challenge.dto.PersonMapper;
 import com.egt.challenge.service.PersonService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,8 @@ public class PersonController {
 
     @NonNull
     private final PersonService personService;
+    @NonNull
+    private final PersonMapper personMapper;
 
     // TODO create the appropriate endpoints as outlined in the README
 }
