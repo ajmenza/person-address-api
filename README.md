@@ -46,7 +46,7 @@ The project contains a Controller/Service/Repo structure, and “TODO” comment
       2. An Address used as a main address should not be able to be deleted. 
       3. Attempting to delete an id that does not exist should return an error. 
    5. GET	/address/{id} 
-   6. This endpoint should return a single Address record with the corresponding Person information. 
-   7. Attempting to get an id that does not exist should return an error.
+      1. This endpoint should return a single Address record with the corresponding Person information. 
+      2. Attempting to get an id that does not exist should return an error.
 3. When a piece of validation fails, then return an http status of 400 and a message stating what caused the error.
 4. Add unit tests for all methods added into the Person Service and Address Service to ensure they return expected results/perform the correct actions when called.
