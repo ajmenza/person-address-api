@@ -26,8 +26,8 @@ public class AddressRepositoryImpl implements AddressRepository {
 
     @Override
     public Address save(Address address) {
-        if(address.getId() == null) {
-            address.setId((long)repo.size() + 1);
+        if (address.getId() == null) {
+            address.setId((long) repo.size() + 1);
         }
         repo.put(address.getId(), address);
         return address;
@@ -35,6 +35,6 @@ public class AddressRepositoryImpl implements AddressRepository {
 
     @Override
     public void delete(Address address) {
-
+        repo.remove(address.getId());
     }
 }
