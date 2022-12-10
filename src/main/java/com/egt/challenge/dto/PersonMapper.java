@@ -6,5 +6,7 @@ public interface PersonMapper {
 
     PersonDto toDto(Person entity);
 
+    PersonDto toDtoAll(Person entity);
+
     Person toEntity(PersonDto dto);
 }

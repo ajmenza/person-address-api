@@ -6,6 +6,8 @@ public interface AddressMapper {
 
     AddressDto toDto(Address entity);
 
+    AddressDto toDtoAll(Address entity);
+
     Address toEntity(AddressDto dto);
 
 }

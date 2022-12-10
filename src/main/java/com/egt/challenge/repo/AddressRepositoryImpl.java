@@ -1,18 +1,17 @@
 package com.egt.challenge.repo;
 
 import com.egt.challenge.model.Address;
+import com.egt.challenge.model.Person;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Component
 public class AddressRepositoryImpl implements AddressRepository {
 
     private final Map<Long, Address> repo = new HashMap<>();
+    private Comparator<Address> compareById = Comparator.comparing(Address::getId);
 
     @Override
     public List<Address> findAll() {
@@ -27,8 +26,18 @@ public class AddressRepositoryImpl implements AddressRepository {
     @Override
     public Address save(Address address) {
         if (address.getId() == null) {
-            address.setId((long) repo.size() + 1);
+            List<Address> addressList = findAll();
+            if (addressList.isEmpty() || addressList == null)
+                address.setId(1L);
+            else {
+                // Sort by id number from low to high
+                addressList = addressList.stream().sorted(compareById).collect(Collectors.toList());
+                Address lastElement = addressList.get(addressList.size() - 1);
+                // Set id to id of last element (highest id) plus 1
+                address.setId(lastElement.getId() + 1L);
+            }
         }
+
         repo.put(address.getId(), address);
         return address;
     }
